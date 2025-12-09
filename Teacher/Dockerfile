@@ -4,7 +4,7 @@ COPY pom.xml .
 COPY src ./src
 RUN mvn -DekipTests package
 
-FROM eclipse-temurin:1
-WORKDIR /app7-jre
-COPY --from=build /app/targer/*.jar app.jar
+FROM eclipse-temurin:17-jre
+WORKDIR /app
+COPY --from=build /app/target/*.jar app.jar
 ENTRYPOINT ["java","-jar","app.jar"]
